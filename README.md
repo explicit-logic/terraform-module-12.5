@@ -87,6 +87,12 @@ Paste the content of pem file `cat ~/Downloads/myapp-key-pair.pem`
 
 ![](./images/add-ssh-key-to-jenkins.png)
 
+Restrict access to pem file
+
+```sh
+chmod 400 ~/Downloads/myapp-key-pair.pem
+```
+
 
 ### Add AWS Credentials to Jenkins
 
@@ -243,3 +249,13 @@ def shellCmd = "bash ./server-cmds.sh ${params.IMAGE_NAME}:${params.IMAGE_TAG} $
 
 ### Run CI/CD pipeline
 
+Connect to the newly created ec2 instance
+
+```sh
+ssh -i ~/Downloads/myapp-key-pair.pem ec2-user@<ec2_public_ip>
+```
+
+Run
+```sh
+docker ps
+```
